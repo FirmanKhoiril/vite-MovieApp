@@ -1,4 +1,5 @@
 import axios from "axios";
+import { TDetail } from "../types/Types";
 
 const options = {
   headers: {
@@ -14,7 +15,13 @@ const fetchMovie = async (url: string) => {
   return data;
 };
 
-export const getMovies = async (pageParam: string): Promise<any> => {
-  const res = await fetchMovie(`/discover/movie?includes_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&page=${pageParam}`);
+export const getMovies = async (pageParam: string, genre: string): Promise<any> => {
+  const res = await fetchMovie(`${genre}&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&page=${pageParam}`);
+  return res;
+};
+
+export const detailMovies = async (id?: string): Promise<TDetail> => {
+  const res = await fetchMovie(`movie/${id}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
+  console.log(res);
   return res;
 };

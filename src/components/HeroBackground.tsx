@@ -14,6 +14,7 @@ const HeroBackground = ({ background }: any) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
     autoplay: true,
     autoplaySpeed: 2500,
     cssEase: "linear",
@@ -25,10 +26,10 @@ const HeroBackground = ({ background }: any) => {
       <Slider {...settings}>
         {background.map((hero: any) =>
           hero.results.slice(0, 1).map((item: TCardDetail) => (
-            <Link to={`/movie/${item.id}`} className="rounded-xl relative h-[60vh] w-[1150px]" key={item.id}>
-              <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} width={1150} className="h-[60vh] rounded-xl w-[100vw]" />
-              <Box sx={{ position: "absolute", top: 0, height: "60vh", width: "100%" }} className=" rounded-xl bg-black/70">
-                <Box sx={{ minWidth: 300, maxWidth: 400, p: { xs: 2, md: 8 }, flexDirection: "column", display: "flex", flexWrap: "wrap", gap: 1 }}>
+            <Link to={`/movie/${item.id}`} className="rounded-lg relative h-[50vh] w-[1150px]" key={item.id}>
+              <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} width={1150} className="h-[50vh] rounded-lg w-[100vw]" />
+              <Box sx={{ position: "absolute", top: 0, height: "50vh", width: "100%" }} className=" rounded-lg bg-black/70">
+                <Box sx={{ minWidth: 300, maxWidth: 400, p: { xs: 2, md: 8 }, flexDirection: "column", display: "flex", flexWrap: "wrap", gap: 1, position: "absolute", bottom: 10 }}>
                   <Typography variant="h5">
                     <span className="text-white ">{item.title}</span>
                   </Typography>
