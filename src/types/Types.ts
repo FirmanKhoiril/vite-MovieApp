@@ -9,10 +9,29 @@ export type TContext = {
   setPopularGenre: React.Dispatch<SetStateAction<string>>;
 };
 
+export type TActor = {
+  cast_id: number;
+  profile_path: string;
+  credit_id: string;
+  id: number;
+  character: string;
+  name: string;
+};
+
+export interface IId {
+  id: string | number | any;
+}
+
 export type TGenre = {
   id: number;
   name: string;
 };
+export interface IGenre {
+  genre: {
+    id: number;
+    name: string;
+  };
+}
 
 export type TProductionCountry = {
   name: string;
@@ -39,6 +58,7 @@ export type TDetail = {
   original_language: string;
   original_title: string;
   overview: string;
+  runtime: number;
   popularity: number;
   poster_path: string;
   production_companies: [TProductionCompanies];
@@ -50,7 +70,7 @@ export type TDetail = {
   title: string;
   video: false;
   vote_count: number;
-  vote_average: number;
+  vote_average: number | any;
 };
 
 export type TSpoken = {
@@ -65,6 +85,7 @@ export interface ICardDetail {
     id: number;
     original_language: string;
     original_title: string;
+    title: string;
     release_date: string;
     vote_average: number;
     poster_path: string;

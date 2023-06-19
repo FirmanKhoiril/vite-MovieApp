@@ -4,23 +4,34 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { Link } from "react-router-dom";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import moment from "moment";
 
 const MovieCard = ({ movie }: ICardDetail) => {
   return (
-    <Link to={`/movie/${movie.id}`} className="flex flex-col min-h-[320px] rounded-t-2xl overflow-hidden min-w-[220px]">
+    <Box sx={{ display: "flex", minHeight: 320, minWidth: 220, flexDirection: "column", position: "relative" }} className=" group rounded-t-2xl">
       <LazyLoadImage
         src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
         effect="opacity"
         loading="lazy"
-        className=" min-h-[300px] hover:scale-[1.05] rounded-2xl transition__all peer ease-linear min-w-[220px]"
+        className="min-h-[300px] absolute rounded-2xl transition__all peer ease-linear min-w-[220px]  group-hover:translate-y-[-5vw]"
         alt={movie.original_title}
         height={320}
         width={200}
       />
-      <Box sx={{ height: 50, width: 220, mt: 2 }} className="truncate">
-        <Typography variant="body1">
-          <span className=" text-[20px] tracking-wide">{movie.original_title}</span>
+      <Box
+        sx={{ minHeight: 50, width: 220, mt: 2, position: "absolute", bottom: 0, p: 1 }}
+        className="sm:group-hover:translate-y-[-4vw] rounded-b-xl transition__all group-hover:opacity-100 opacity-0 bg-zinc-900/90 scale-0 group-hover:scale-100"
+      >
+        <Typography variant="subtitle2">
+          <span className="text-xs">{moment(movie.release_date).format("LL")}</span>
         </Typography>
+        <Link to={`/movie/${movie.id}`}>
+          <Typography variant="body2">
+            <Tooltip title={movie.title}>
+              <span className=" text-[20px] hover:text-white/60 transition__all tracking-wide">{movie.title}</span>
+            </Tooltip>
+          </Typography>
+        </Link>
         <Tooltip title={movie.vote_average}>
           <span className="flex text-orange-300">
             {movie.vote_average >= 2 ? <BsStarFill /> : movie.vote_average >= 1 ? <BsStarHalf /> : <BsStar />}
@@ -31,7 +42,7 @@ const MovieCard = ({ movie }: ICardDetail) => {
           </span>
         </Tooltip>
       </Box>
-    </Link>
+    </Box>
   );
 };
 

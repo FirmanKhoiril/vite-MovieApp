@@ -22,6 +22,11 @@ export const getMovies = async (pageParam: string, genre: string): Promise<any> 
 
 export const detailMovies = async (id?: string): Promise<TDetail> => {
   const res = await fetchMovie(`movie/${id}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
-  console.log(res);
+
+  return res;
+};
+
+export const getActorMovie = async (id?: string): Promise<any> => {
+  const res = await fetchMovie(`movie/${id}/credits?api_key=api_key&language=en-US`);
   return res;
 };

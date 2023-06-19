@@ -8,6 +8,7 @@ import { RiMickeyLine, RiEmotionLaughLine, RiEmotionSadLine } from "react-icons/
 import { BiCameraMovie, BiMask } from "react-icons/bi";
 
 import { IoSkullSharp } from "react-icons/io5";
+
 export const Categorygenres = [
   {
     title: "Categories",

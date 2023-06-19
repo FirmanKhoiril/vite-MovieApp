@@ -34,7 +34,7 @@ const Home = () => {
             <Typography variant="h4" sx={{ px: 4, py: 2 }}>
               Top {popularGenre === "movie/top_rated?language=en-US" ? "Rated" : popularGenre === "movie/popular?language=en-US" ? "Trending" : popularGenre === "movie/upcoming?language=en-US" ? "Upcoming" : "Genres"} Movie in 2023
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 2, justifyContent: "center", mt: 1 }}>
+            <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 3, justifyContent: "center", mt: 1 }}>
               {data?.pages?.map((page) => page.results.slice(1, 20).map((item: TCardDetail) => <MovieCard key={item.id} movie={item} />))}
             </Box>
             {hasNextPage && (
