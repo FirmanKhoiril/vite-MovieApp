@@ -2,16 +2,25 @@ import { Routes, Route } from "react-router-dom";
 import { Detail, Home, Search } from "./pages";
 import { Navbar, Sidebar } from "./layout";
 import { useGlobalContext } from "./context/Context";
-import { BlackScreen } from "./components";
+import { BlackScreen, MovieModel } from "./components";
 const App = () => {
-  const { toogleSidebar } = useGlobalContext();
+  const { toogleSidebar, movieModel, setMovieModel, setToogleSidebar } = useGlobalContext();
+
+  const handleSidebar = () => setToogleSidebar((prev: boolean) => !prev);
+  const handleModel = () => setMovieModel((prev: boolean) => !prev);
   return (
     <header className="relative bg-zinc-900 text-white">
       <Navbar />
       {toogleSidebar && (
         <>
-          <BlackScreen />
+          <BlackScreen onClick={handleSidebar} />
           <Sidebar />
+        </>
+      )}
+      {movieModel && (
+        <>
+          <MovieModel />
+          <BlackScreen onClick={handleModel} />
         </>
       )}
 

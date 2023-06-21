@@ -5,7 +5,7 @@ import { CiDark, CiSun } from "react-icons/ci";
 import { useGlobalContext } from "../context/Context";
 
 const Sidebar = () => {
-  const { setPopularGenre, toogleSidebar } = useGlobalContext();
+  const { setPopularGenre, toogleSidebar, setGenreName } = useGlobalContext();
   return (
     <Stack
       className={`${toogleSidebar ? "translate-x-[0%]" : "translate-x-[100%]"} transition duration-1000`}
@@ -31,7 +31,15 @@ const Sidebar = () => {
             {genre.title}
           </Typography>
           {genre.genre.map((item) => (
-            <Link to="/" onClick={() => setPopularGenre(item?.url)} key={item.name} className="hover:bg-red-500/80 bg-zinc-800 capitalize hover:text-black text-white py-3 gap-1 flex items-center rounded-lg min-w-[180px] px-2">
+            <Link
+              to="/"
+              onClick={() => {
+                setPopularGenre(item?.url);
+                setGenreName(item.name);
+              }}
+              key={item.name}
+              className="hover:bg-red-500/80 bg-zinc-800 capitalize hover:text-black text-white py-3 gap-1 flex items-center rounded-lg min-w-[180px] px-2"
+            >
               <span className="text-3xl">{item.icon}</span>
               <span className="text-lg">{item.name}</span>
             </Link>

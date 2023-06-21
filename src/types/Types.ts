@@ -4,8 +4,14 @@ export type TContext = {
   toogleSidebar: boolean;
   searchTerm: string;
   popularGenre: string;
+  movieModel: boolean;
+  genreName: string;
+  movieId: number;
   setToogleSidebar: React.Dispatch<SetStateAction<boolean>>;
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
+  setMovieModel: React.Dispatch<SetStateAction<boolean>>;
+  setMovieId: React.Dispatch<SetStateAction<number>>;
+  setGenreName: React.Dispatch<SetStateAction<string>>;
   setPopularGenre: React.Dispatch<SetStateAction<string>>;
 };
 
@@ -17,7 +23,11 @@ export type TActor = {
   character: string;
   name: string;
 };
-
+export type TTrailer = {
+  id: string;
+  key: string;
+  name: string;
+};
 export interface IId {
   id: string | number | any;
 }

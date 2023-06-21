@@ -3,12 +3,14 @@ import { ICardDetail } from "../types/Types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { Link } from "react-router-dom";
-import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import { BsStarFill, BsStarHalf, BsStar, BsFillPlayFill } from "react-icons/bs";
 import moment from "moment";
+import { useGlobalContext } from "../context/Context";
 
 const MovieCard = ({ movie }: ICardDetail) => {
+  const { setMovieId, setMovieModel } = useGlobalContext();
   return (
-    <Box sx={{ display: "flex", minHeight: 320, minWidth: 220, flexDirection: "column", position: "relative" }} className=" group rounded-t-2xl">
+    <Box sx={{ display: "flex", minHeight: 330, minWidth: 220, flexDirection: "column", position: "relative" }} className=" group rounded-t-2xl">
       <LazyLoadImage
         src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
         effect="opacity"
@@ -18,13 +20,22 @@ const MovieCard = ({ movie }: ICardDetail) => {
         height={320}
         width={200}
       />
-      <Box
-        sx={{ minHeight: 50, width: 220, mt: 2, position: "absolute", bottom: 0, p: 1 }}
-        className="sm:group-hover:translate-y-[-4vw] rounded-b-xl transition__all group-hover:opacity-100 opacity-0 bg-zinc-900/90 scale-0 group-hover:scale-100"
-      >
+
+      <Box sx={{ minHeight: 50, width: 220, mt: 2, position: "absolute", bottom: 0, p: 1 }} className="sm:group-hover:translate-y-[-4vw] rounded-b-xl transition__all group-hover:opacity-100 opacity-0 bg-zinc-900/90">
         <Typography variant="subtitle2">
           <span className="text-xs">{moment(movie.release_date).format("LL")}</span>
         </Typography>
+        <Box
+          component={"button"}
+          sx={{ position: "absolute", bottom: 1, right: 1, bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
+          className="hover:bg-white/80"
+          onClick={() => {
+            setMovieId(movie.id);
+            setMovieModel((prev: boolean) => !prev);
+          }}
+        >
+          <BsFillPlayFill size={32} className="hover:text-black" />
+        </Box>
         <Link to={`/movie/${movie.id}`}>
           <Typography variant="body2">
             <Tooltip title={movie.title}>
@@ -32,6 +43,7 @@ const MovieCard = ({ movie }: ICardDetail) => {
             </Tooltip>
           </Typography>
         </Link>
+
         <Tooltip title={movie.vote_average}>
           <span className="flex text-orange-300">
             {movie.vote_average >= 2 ? <BsStarFill /> : movie.vote_average >= 1 ? <BsStarHalf /> : <BsStar />}
