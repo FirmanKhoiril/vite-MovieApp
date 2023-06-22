@@ -21,7 +21,7 @@ export const getMovies = async (genre: string): Promise<any> => {
 };
 
 export const getSearchMovies = async (pageParams?: string, search?: string) => {
-  const res = await fetchMovie(`search/movie?include_adult=false&language=en-US&page=${pageParams}&query=${search}`);
+  const res = await fetchMovie(`search/movie?include_adult=false&language=en-US&page=${pageParams}&query=${search}&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
   return res;
 };
 
@@ -31,6 +31,10 @@ export const detailMovies = async (id?: string): Promise<TDetail> => {
   return res;
 };
 
+export const getNowPlaying = async (timePopuler?: string): Promise<any> => {
+  const res = await fetchMovie(`trending/movie/${timePopuler}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
+  return res;
+};
 export const getActorMovie = async (id?: string): Promise<any> => {
   const res = await fetchMovie(`movie/${id}/credits?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&language=en-US`);
   return res;

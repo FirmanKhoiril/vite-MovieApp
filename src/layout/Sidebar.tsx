@@ -5,10 +5,10 @@ import { CiDark, CiSun } from "react-icons/ci";
 import { useGlobalContext } from "../context/Context";
 
 const Sidebar = () => {
-  const { setPopularGenre, toogleSidebar, setGenreName } = useGlobalContext();
+  const { setPopularGenre, toogleSidebar, setGenreName, setToogleSidebar } = useGlobalContext();
   return (
     <Stack
-      className={`${toogleSidebar ? "translate-x-[0%]" : "translate-x-[100%]"} transition duration-1000`}
+      className={`${toogleSidebar ? "translate-x-[0%]" : "translate-x-[100%]"} transition duration-1000 scrollbar scrollbar-h-3 scrollbar-thumb-red-500 scrollbar-track-black/10 scroll-p-7`}
       sx={{ overflowY: "auto", height: "100%", flexDirection: "column", position: "fixed", top: 0, zIndex: 20, bgcolor: "#18181b", px: 2, py: 1 }}
     >
       <Link to={`/`}>
@@ -36,6 +36,7 @@ const Sidebar = () => {
               onClick={() => {
                 setPopularGenre(item?.url);
                 setGenreName(item.name);
+                setToogleSidebar((prev: boolean) => !prev);
               }}
               key={item.name}
               className="hover:bg-red-500/80 bg-zinc-800 capitalize hover:text-black text-white py-3 gap-1 flex items-center rounded-lg min-w-[180px] px-2"

@@ -8,3 +8,4 @@ export { default as Genre } from "./Genre";
 export { default as Actor } from "./Actor";
 export { default as MovieModel } from "./MovieModel";
 export { default as RelatedMovie } from "./RelatedMovie";
+export { default as NowPlaying } from "./NowPlaying";

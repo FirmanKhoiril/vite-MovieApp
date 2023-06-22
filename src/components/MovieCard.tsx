@@ -27,14 +27,14 @@ const MovieCard = ({ movie }: ICardDetail) => {
         </Typography>
         <Box
           component={"button"}
-          sx={{ position: "absolute", bottom: 2, right: 2, bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
+          sx={{ position: "absolute", bottom: 2, right: 2, bgcolor: "#dc2626", width: 32, height: 32, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
           className="hover:bg-white/80 transition__all"
           onClick={() => {
             setMovieId(movie.id);
             setMovieModel((prev: boolean) => !prev);
           }}
         >
-          <BsFillPlayFill size={32} className="hover:text-black" />
+          <BsFillPlayFill size={30} className="hover:text-black" />
         </Box>
         <Link to={`/movie/${movie.id}`}>
           <Typography variant="body2">

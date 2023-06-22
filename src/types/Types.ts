@@ -7,9 +7,11 @@ export type TContext = {
   movieModel: boolean;
   genreName: string;
   movieId: number;
+  timePopuler: string;
   moreActor: boolean;
   setToogleSidebar: React.Dispatch<SetStateAction<boolean>>;
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
+  setTimePopuler: React.Dispatch<SetStateAction<string>>;
   setMovieModel: React.Dispatch<SetStateAction<boolean>>;
   setMovieId: React.Dispatch<SetStateAction<number>>;
   setGenreName: React.Dispatch<SetStateAction<string>>;

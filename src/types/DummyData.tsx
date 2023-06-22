@@ -132,3 +132,8 @@ export const Categorygenres = [
     ],
   },
 ];
+
+export const time = [
+  { name: "day", value: "Today" },
+  { name: "week", value: "This Week" },
+];
