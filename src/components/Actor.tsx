@@ -18,14 +18,14 @@ const Actor = ({ id }: IId) => {
         <Error />
       ) : (
         isSuccess && (
-          <Box sx={{ minHeight: 190, minWidth: 150, display: "flex", flexWrap: "wrap", gap: 1.5, justifyContent: "center" }}>
+          <Box sx={{ minHeight: 220, minWidth: 150, display: "flex", flexWrap: "wrap", gap: 1.5, justifyContent: "center" }}>
             {dataActor?.map((actor: TActor) => (
-              <Link to={`/actor/${actor.id}`} className="flex flex-col hover:scale-105 transition__all" key={actor.cast_id}>
+              <Link to={`/actor/${actor.id}`} className="flex flex-col hover:scale-105 transition__all " key={actor.cast_id}>
                 <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} width={150} loading="lazy" effect="opacity" className="w-[160px] rounded-lg h-[180px]" alt={actor.name} height={160} />
-                <Box sx={{ minHeight: 30, mt: 2.7 }}>
+                <Box sx={{ height: 80, mt: 2.7, width: 150, p: 1 }}>
                   <Typography variant="subtitle1" sx={{ display: "flex", flexDirection: "column" }}>
                     {actor.name}
-                    <span className="text-sm text-gray-400">{actor.character}</span>
+                    <span className="text-xs text-gray-400">{actor.character}</span>
                   </Typography>
                 </Box>
               </Link>

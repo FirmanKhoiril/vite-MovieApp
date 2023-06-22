@@ -63,7 +63,7 @@ export type TDetail = {
     poster_path: string;
   };
   genres: [TGenre];
-  id: number;
+  id: number | any;
   imdb_id: string;
   original_language: string;
   original_title: string;

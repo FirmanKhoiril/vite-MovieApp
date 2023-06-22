@@ -7,9 +7,12 @@ import moment from "moment";
 import { TGenre, TSpoken } from "../types/Types";
 import { Actor, Error, Genre, Loading } from "../components";
 import useGetDetail from "../hooks/useGetDetail";
+import { BsFillPlayFill } from "react-icons/bs";
+import { useGlobalContext } from "../context/Context";
 
 const Detail = () => {
   const { id } = useParams();
+  const { setMovieId, setMovieModel } = useGlobalContext();
   const { data, isError, isFetching, isLoading, isSuccess } = useGetDetail({ id });
 
   return (
@@ -30,7 +33,24 @@ const Detail = () => {
                 className="object-contain min-h-[280px] rounded-xl min-w-[350px] shadow-[2px_12px_20px_5px] shadow-white/30"
               />
               <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
-                <Typography variant="h4">{data?.title}</Typography>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap" }}>
+                  <Typography variant="h4">{data?.title}</Typography>
+                </Box>
+                <Box sx={{ display: "flex", gap: 1, alignItems: "center", justifyContent: "start" }}>
+                  <Box
+                    component={"button"}
+                    sx={{ bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
+                    className="hover:bg-white/80 transition__all"
+                    onClick={() => {
+                      setMovieId(data?.id);
+                      setMovieModel((prev: boolean) => !prev);
+                    }}
+                  >
+                    <BsFillPlayFill size={32} className="hover:text-black" />
+                  </Box>
+                  Play Trailer
+                </Box>
+
                 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", mt: 2, gap: 2, flexWrap: "wrap" }}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexWrap: "wrap" }}>
                     <Tooltip title={data?.vote_average}>
@@ -66,9 +86,9 @@ const Detail = () => {
                   </Typography>
                   <Actor id={data?.id} />
                 </Box>
-                <Box>
+                {/* <Box>
                   <button type="button"></button>
-                </Box>
+                </Box> */}
               </Box>
             </Box>
           </Container>

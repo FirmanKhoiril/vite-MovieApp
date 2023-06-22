@@ -6,7 +6,7 @@ import { FaMusic } from "react-icons/fa";
 import { RiMickeyLine, RiEmotionLaughLine, RiEmotionSadLine } from "react-icons/ri";
 import { BiCameraMovie, BiMask } from "react-icons/bi";
 import { IoSkullSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 
 const Genre = ({ genre }: IGenre) => {
   const genreIcon = () => {
@@ -55,10 +55,12 @@ const Genre = ({ genre }: IGenre) => {
   };
   const icon = genreIcon();
   return (
-    <Link to="/" className="flex flex-col items-center">
-      {icon}
-      {genre.name}
-    </Link>
+    <Tooltip title={genre.name}>
+      <span className="flex items-center flex-col">
+        {icon}
+        {genre.name}
+      </span>
+    </Tooltip>
   );
 };
 

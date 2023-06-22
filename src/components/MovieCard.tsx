@@ -27,8 +27,8 @@ const MovieCard = ({ movie }: ICardDetail) => {
         </Typography>
         <Box
           component={"button"}
-          sx={{ position: "absolute", bottom: 1, right: 1, bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
-          className="hover:bg-white/80"
+          sx={{ position: "absolute", bottom: 2, right: 2, bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
+          className="hover:bg-white/80 transition__all"
           onClick={() => {
             setMovieId(movie.id);
             setMovieModel((prev: boolean) => !prev);
@@ -39,7 +39,7 @@ const MovieCard = ({ movie }: ICardDetail) => {
         <Link to={`/movie/${movie.id}`}>
           <Typography variant="body2">
             <Tooltip title={movie.title}>
-              <span className=" text-[20px] hover:text-white/60 transition__all tracking-wide">{movie.title}</span>
+              <span className="text-[16px] bg-gradient-to-r text-transparent bg-clip-text from-red-500 via-red-400 to-red-500 hover:text-red-500 transition__all tracking-wide">{movie.title}</span>
             </Tooltip>
           </Typography>
         </Link>

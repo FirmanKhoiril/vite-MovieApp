@@ -20,6 +20,11 @@ export const getMovies = async (genre: string): Promise<any> => {
   return res;
 };
 
+export const getSearchMovies = async (pageParams?: string, search?: string) => {
+  const res = await fetchMovie(`search/movie?include_adult=false&language=en-US&page=${pageParams}&query=${search}`);
+  return res;
+};
+
 export const detailMovies = async (id?: string): Promise<TDetail> => {
   const res = await fetchMovie(`movie/${id}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
 
