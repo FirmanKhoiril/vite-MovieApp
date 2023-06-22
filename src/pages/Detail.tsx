@@ -5,14 +5,15 @@ import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import moment from "moment";
 import { TGenre, TSpoken } from "../types/Types";
-import { Actor, Error, Genre, Loading } from "../components";
+import { Actor, Error, Genre, Loading, RelatedMovie } from "../components";
 import useGetDetail from "../hooks/useGetDetail";
 import { BsFillPlayFill } from "react-icons/bs";
 import { useGlobalContext } from "../context/Context";
+import { MdExpandMore, MdExpandLess } from "react-icons/md";
 
 const Detail = () => {
   const { id } = useParams();
-  const { setMovieId, setMovieModel } = useGlobalContext();
+  const { setMovieId, setMovieModel, setMoreActor, moreActor } = useGlobalContext();
   const { data, isError, isFetching, isLoading, isSuccess } = useGetDetail({ id });
 
   return (
@@ -33,22 +34,22 @@ const Detail = () => {
                 className="object-contain min-h-[280px] rounded-xl min-w-[350px] shadow-[2px_12px_20px_5px] shadow-white/30"
               />
               <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap" }}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, flexWrap: "wrap", justifyContent: "space-between", width: "100%" }}>
                   <Typography variant="h4">{data?.title}</Typography>
-                </Box>
-                <Box sx={{ display: "flex", gap: 1, alignItems: "center", justifyContent: "start" }}>
-                  <Box
-                    component={"button"}
-                    sx={{ bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
-                    className="hover:bg-white/80 transition__all"
-                    onClick={() => {
-                      setMovieId(data?.id);
-                      setMovieModel((prev: boolean) => !prev);
-                    }}
-                  >
-                    <BsFillPlayFill size={32} className="hover:text-black" />
+                  <Box sx={{ display: "flex", gap: 1, alignItems: "center", justifyContent: "start" }}>
+                    <Box
+                      component={"button"}
+                      sx={{ bgcolor: "#dc2626", width: 40, height: 40, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
+                      className="hover:bg-white/80 transition__all"
+                      onClick={() => {
+                        setMovieId(data?.id);
+                        setMovieModel((prev: boolean) => !prev);
+                      }}
+                    >
+                      <BsFillPlayFill size={32} className="hover:text-black" />
+                    </Box>
+                    Play Trailer
                   </Box>
-                  Play Trailer
                 </Box>
 
                 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", mt: 2, gap: 2, flexWrap: "wrap" }}>
@@ -80,16 +81,19 @@ const Detail = () => {
                   <Typography variant="h5">Description</Typography>
                   <Typography>{data?.overview}</Typography>
                 </Box>
-                <Box sx={{ display: "flex", mt: 2, flexDirection: "column", gap: 1 }}>
-                  <Typography variant="h5" my={1} textAlign={"center"}>
-                    Top Cash
-                  </Typography>
-                  <Actor id={data?.id} />
-                </Box>
-                {/* <Box>
-                  <button type="button"></button>
-                </Box> */}
               </Box>
+            </Box>
+            <Box>
+              <Box sx={{ display: "flex", mt: 2, flexDirection: "column", gap: 1 }}>
+                <Typography variant="h5" sx={{ display: "flex", justifyContent: "space-between", my: 1 }}>
+                  Top Cash
+                  <button className="p-2 bg-white/10 rounded-full hover:bg-white/30 transition__all" type="button" onClick={() => setMoreActor((prev: boolean) => !prev)}>
+                    {moreActor ? <MdExpandLess size={32} /> : <MdExpandMore size={32} />}
+                  </button>
+                </Typography>
+                <Actor id={data?.id} />
+              </Box>
+              <RelatedMovie id={data?.id} />
             </Box>
           </Container>
         )

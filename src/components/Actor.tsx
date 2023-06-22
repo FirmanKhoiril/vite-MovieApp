@@ -5,10 +5,19 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 import useGetActor from "../hooks/useGetActor";
 import { Link } from "react-router-dom";
 import { Error, Loading } from ".";
+import { useGlobalContext } from "../context/Context";
 
 const Actor = ({ id }: IId) => {
   const { data, isLoading, isSuccess, isFetching, isError } = useGetActor({ id });
-  const dataActor = data?.cast?.slice(0, 6);
+  const { moreActor } = useGlobalContext();
+
+  const actorFilter = () => {
+    const dataActor = data?.cast.slice(0, 7);
+    if (moreActor) return data?.cast;
+    return dataActor;
+  };
+
+  const filter = actorFilter();
 
   return (
     <>
@@ -19,7 +28,7 @@ const Actor = ({ id }: IId) => {
       ) : (
         isSuccess && (
           <Box sx={{ minHeight: 220, minWidth: 150, display: "flex", flexWrap: "wrap", gap: 1.5, justifyContent: "center" }}>
-            {dataActor?.map((actor: TActor) => (
+            {filter.map((actor: TActor) => (
               <Link to={`/actor/${actor.id}`} className="flex flex-col hover:scale-105 transition__all " key={actor.cast_id}>
                 <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} width={150} loading="lazy" effect="opacity" className="w-[160px] rounded-lg h-[180px]" alt={actor.name} height={160} />
                 <Box sx={{ height: 80, mt: 2.7, width: 150, p: 1 }}>

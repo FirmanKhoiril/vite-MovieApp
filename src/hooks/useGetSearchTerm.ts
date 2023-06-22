@@ -14,6 +14,7 @@ const useGetSearchTerm = ({ id }: searchProps) => {
       return pages.page + 1;
     },
   });
+
   return { data, isError, hasNextPage, fetchNextPage, isSuccess, isLoading, isFetching, isFetchingNextPage };
 };
 
