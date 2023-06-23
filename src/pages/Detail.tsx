@@ -4,7 +4,7 @@ import { Box, Container, Tooltip, Typography } from "@mui/material";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import moment from "moment";
-import { TGenre, TSpoken } from "../types/Types";
+import { TGenre, TProductionCompanies, TSpoken } from "../types/Types";
 import { Actor, Error, Genre, Loading, RelatedMovie } from "../components";
 import useGetDetail from "../hooks/useGetDetail";
 import { BsFillPlayFill } from "react-icons/bs";
@@ -80,6 +80,19 @@ const Detail = () => {
                 <Box sx={{ mt: 2.5, gap: 1, display: "flex", flexDirection: "column" }}>
                   <Typography variant="h5">Description</Typography>
                   <Typography>{data?.overview}</Typography>
+                </Box>
+                <Box sx={{ mt: 2.5, py: 1 }}>
+                  <Typography variant="h5">Production Companies</Typography>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 2 }}>
+                    {data?.production_companies.map((company: TProductionCompanies) => (
+                      <Box sx={{ display: "flex", bgcolor: "white", px: 1.2, py: 0.8, alignItems: "center", borderRadius: 1, gap: 1, flexDirection: "column" }} key={company.id}>
+                        <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${company.logo_path}`} className="mix-blend-darken h-10" loading="lazy" effect="opacity" alt={company.name} />
+                        <Typography sx={{ color: "black", opacity: 0.6 }} variant="subtitle2">
+                          {company.name}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
                 </Box>
               </Box>
             </Box>

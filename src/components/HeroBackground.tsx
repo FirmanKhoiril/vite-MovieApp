@@ -18,18 +18,18 @@ const HeroBackground = ({ background }: any) => {
   }, []);
 
   return (
-    <Box sx={{ px: 1, my: 2 }}>
+    <Box sx={{ px: 1, my: 1 }}>
       {randomBackground.map((item: TCardDetail) => (
-        <Box sx={{ width: "100%", height: "60vh", position: "relative" }} key={item.id}>
-          <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} className="h-[60vh] w-[100vw]" />
+        <Box sx={{ width: "100%", height: "70vh", position: "relative" }} key={item.id}>
+          <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} className="h-[70vh] w-[100vw]" />
           <Box
-            sx={{ position: "absolute", height: "60vh", width: "100%", zIndex: 10, top: 0, display: "flex", m: "auto", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 2, px: 1 }}
+            sx={{ position: "absolute", height: "70vh", width: "100%", zIndex: 10, top: 0, display: "flex", m: "auto", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 2, px: 1 }}
             className=" bg-gradient-to-b from-transparent to-zinc-900/60"
           >
             <Typography variant="h3" fontWeight={800}>
               Welcome. <br />
-              <span className="text-3xl">
-                Millions of movies, TV shows and people to discover. <br /> Explore now.
+              <span className="text-xl md:text-3xl">
+                Millions of movies, TV shows and people to discover. <br className="md:block hidden" /> Explore now.
               </span>
             </Typography>
             <SearchBar />
