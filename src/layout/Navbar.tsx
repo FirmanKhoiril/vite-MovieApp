@@ -1,13 +1,17 @@
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { useGlobalContext } from "../context/Context";
+import { Button } from "../components";
 
 const Navbar = () => {
-  const { setToogleSidebar } = useGlobalContext();
+  const { setToogleSidebar, setToogleSearch } = useGlobalContext();
+
+  const handleSearch = () => setToogleSearch((prev: boolean) => !prev);
+  const handleMenu = () => setToogleSidebar((prev: boolean) => !prev);
+
   return (
     <nav className="p-[10px] text-white sticky inset-0 bg-zinc-800 z-20 flex items-center justify-between shadow-xl">
-      <button type="button" className="p-3 transition__all hover:shadow-white/10 rounded-full hover:text-white/80 hover:shadow-[0px_3px_3px_3px]" onClick={() => setToogleSidebar((prev: boolean) => !prev)}>
-        <AiOutlineMenu className="text-2xl" />
-      </button>
+      <Button label="handleMenu" name="handleMenu" type="button" icon={<AiOutlineMenu size={25} />} onClick={handleMenu} />
+      <Button label="handleSearch" name="handleSearchToogle" type="button" icon={<AiOutlineSearch size={25} />} onClick={handleSearch} />
     </nav>
   );
 };

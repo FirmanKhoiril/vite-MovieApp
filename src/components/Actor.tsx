@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { IId, TActor } from "../types/Types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/opacity.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import useGetActor from "../hooks/useGetActor";
 import { Link } from "react-router-dom";
 import { Error, Loading } from ".";
@@ -30,7 +30,7 @@ const Actor = ({ id }: IId) => {
           <Box sx={{ minHeight: 220, minWidth: 150, display: "flex", flexWrap: "wrap", gap: 1.5, justifyContent: "center" }}>
             {filter.map((actor: TActor) => (
               <Link to={`/actor/${actor.id}`} className="flex flex-col hover:scale-105 transition__all " key={actor.cast_id}>
-                <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} width={150} loading="lazy" effect="opacity" className="w-[160px] rounded-lg h-[180px]" alt={actor.name} height={160} />
+                <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} width={150} loading="lazy" effect="blur" className="w-[160px] rounded-lg h-[180px]" alt={actor.name} height={160} />
                 <Box sx={{ height: 80, mt: 2.7, width: 150, p: 1 }}>
                   <Typography variant="subtitle1" sx={{ display: "flex", flexDirection: "column" }}>
                     {actor.name}

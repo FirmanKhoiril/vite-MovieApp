@@ -13,6 +13,8 @@ const StateContext = createContext<TContext>({
   setMoreActor: () => {},
   moreActor: false,
   setMovieModel: () => {},
+  toogleSearch: false,
+  setToogleSearch: () => {},
   movieModel: false,
   setGenreName: () => {},
   genreName: "",
@@ -26,12 +28,32 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
   const [movieModel, setMovieModel] = useState(false);
   const [movieId, setMovieId] = useState(0);
   const [timePopuler, setTimePopuler] = useState("day");
+  const [toogleSearch, setToogleSearch] = useState(false);
   const [genreName, setGenreName] = useState("Populer");
   const [moreActor, setMoreActor] = useState(false);
   const [popularGenre, setPopularGenre] = useState("movie/popular?language=en-US");
   return (
     <StateContext.Provider
-      value={{ toogleSidebar, timePopuler, setTimePopuler, genreName, moreActor, setMoreActor, setGenreName, movieModel, setMovieModel, popularGenre, movieId, setMovieId, setPopularGenre, searchTerm, setSearchTerm, setToogleSidebar }}
+      value={{
+        toogleSidebar,
+        toogleSearch,
+        setToogleSearch,
+        timePopuler,
+        setTimePopuler,
+        genreName,
+        moreActor,
+        setMoreActor,
+        setGenreName,
+        movieModel,
+        setMovieModel,
+        popularGenre,
+        movieId,
+        setMovieId,
+        setPopularGenre,
+        searchTerm,
+        setSearchTerm,
+        setToogleSidebar,
+      }}
     >
       {children}
     </StateContext.Provider>

@@ -2,14 +2,21 @@ import { Routes, Route } from "react-router-dom";
 import { Actor, Detail, Home, Search } from "./pages";
 import { Navbar, Sidebar } from "./layout";
 import { useGlobalContext } from "./context/Context";
-import { BlackScreen, MovieModel } from "./components";
+import { BlackScreen, MovieModel, SearchFilter } from "./components";
 const App = () => {
-  const { toogleSidebar, movieModel, setMovieModel, setToogleSidebar } = useGlobalContext();
+  const { toogleSidebar, movieModel, toogleSearch, setToogleSearch, setMovieModel, setToogleSidebar } = useGlobalContext();
 
   const handleSidebar = () => setToogleSidebar((prev: boolean) => !prev);
   const handleModel = () => setMovieModel((prev: boolean) => !prev);
+  const handleSearch = () => setToogleSearch((prev: boolean) => !prev);
   return (
     <header className="relative  bg-zinc-900  text-white">
+      {toogleSearch && (
+        <>
+          <BlackScreen onClick={handleSearch} />
+          <SearchFilter />
+        </>
+      )}
       <Navbar />
       {toogleSidebar && (
         <>

@@ -1,5 +1,4 @@
-import { SetStateAction } from "react";
-
+import { ReactElement, SetStateAction } from "react";
 export type TContext = {
   toogleSidebar: boolean;
   searchTerm: string;
@@ -8,6 +7,7 @@ export type TContext = {
   genreName: string;
   movieId: number;
   timePopuler: string;
+  toogleSearch: boolean;
   moreActor: boolean;
   setToogleSidebar: React.Dispatch<SetStateAction<boolean>>;
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
@@ -16,8 +16,17 @@ export type TContext = {
   setMovieId: React.Dispatch<SetStateAction<number>>;
   setGenreName: React.Dispatch<SetStateAction<string>>;
   setMoreActor: React.Dispatch<SetStateAction<boolean>>;
+  setToogleSearch: React.Dispatch<SetStateAction<boolean>>;
   setPopularGenre: React.Dispatch<SetStateAction<string>>;
 };
+
+export interface IButton {
+  type: string | any;
+  onClick?: () => void;
+  icon: ReactElement;
+  name: string;
+  label: string;
+}
 
 export type TActor = {
   cast_id: number;

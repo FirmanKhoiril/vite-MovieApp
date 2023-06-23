@@ -8,6 +8,7 @@ const SearchBar = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate(`/search/${searchTerm}`);
+    setSearchTerm("");
   };
   return (
     <form className=" relative" onSubmit={handleSubmit}>

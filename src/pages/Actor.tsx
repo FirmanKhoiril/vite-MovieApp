@@ -1,5 +1,8 @@
+import { useParams } from "react-router-dom";
+
 const Actor = () => {
-  return <div>Actor</div>;
+  const { id } = useParams();
+  return <div>Actor {id}</div>;
 };
 
 export default Actor;

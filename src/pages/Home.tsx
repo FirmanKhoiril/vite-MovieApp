@@ -6,14 +6,14 @@ import { useGlobalContext } from "../context/Context";
 
 const Home = () => {
   const { genreName } = useGlobalContext();
-  const { data, isLoading, isError, isFetching, isSuccess } = useGetMovie();
+  const { data, isLoading, isError, error, isFetching, isSuccess } = useGetMovie();
 
   return (
     <main className="min-h-screen ">
       {isLoading && isFetching ? (
         <Loading />
       ) : isError ? (
-        <Error />
+        <Error error={error} />
       ) : (
         isSuccess && (
           <Box sx={{ display: "flex", flexDirection: "column" }}>
