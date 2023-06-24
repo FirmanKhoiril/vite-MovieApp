@@ -19,15 +19,27 @@ const StateContext = createContext<TContext>({
   setGenreName: () => {},
   genreName: "",
   setTimePopuler: () => {},
+  filterSearch: "",
+  setFilterSearch: () => {},
   timePopuler: "",
+  setFormLogin: () => {},
+  formLogin: {},
 });
+
+const initialForm = {
+  name: "",
+  email: "",
+  password: "",
+};
 
 export const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [toogleSidebar, setToogleSidebar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [movieModel, setMovieModel] = useState(false);
   const [movieId, setMovieId] = useState(0);
+  const [formLogin, setFormLogin] = useState(initialForm);
   const [timePopuler, setTimePopuler] = useState("day");
+  const [filterSearch, setFilterSearch] = useState("");
   const [toogleSearch, setToogleSearch] = useState(false);
   const [genreName, setGenreName] = useState("Populer");
   const [moreActor, setMoreActor] = useState(false);
@@ -35,6 +47,10 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
   return (
     <StateContext.Provider
       value={{
+        filterSearch,
+        formLogin,
+        setFormLogin,
+        setFilterSearch,
         toogleSidebar,
         toogleSearch,
         setToogleSearch,

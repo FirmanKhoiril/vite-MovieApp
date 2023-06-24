@@ -2,6 +2,7 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { useGlobalContext } from "../context/Context";
 import { Button } from "../components";
 import { Box, Typography } from "@mui/material";
+import { MdOutlineAccountCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -15,12 +16,17 @@ const Navbar = () => {
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <Button label="handleMenu" name="handleMenu" type="button" icon={<AiOutlineMenu size={25} />} onClick={handleMenu} />
         <Link to={`/`}>
-          <Typography variant="h4" className=" text-darkLogo font-logo tracking-tighter" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h4" className=" text-darkLogo font-logo tracking-tighter" sx={{ fontWeight: 900 }}>
             FILMREF
           </Typography>
         </Link>
       </Box>
-      <Button label="handleSearch" name="handleSearchToogle" type="button" icon={<AiOutlineSearch size={25} />} onClick={handleSearch} />
+      <Box sx={{ display: "flex", gap: 0.5, alignItems: "center" }}>
+        <Button label="handleSearch" name="handleSearchToogle" type="button" icon={<AiOutlineSearch size={25} />} onClick={handleSearch} />
+        <Link to={`/login`}>
+          <Button label="login" name="login" type="button" icon={<MdOutlineAccountCircle size={25} />} />
+        </Link>
+      </Box>
     </nav>
   );
 };

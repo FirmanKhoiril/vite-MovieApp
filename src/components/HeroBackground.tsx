@@ -9,7 +9,7 @@ const HeroBackground = ({ background }: any) => {
   const randomBackground = useMemo(() => {
     const limit = 20;
 
-    var randomIndex = Math.floor(Math.random() * background.results.length);
+    let randomIndex = Math.floor(Math.random() * background.results.length);
 
     if (randomIndex > limit) randomIndex = limit;
 

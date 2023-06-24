@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { Actor, Detail, Home, Search } from "./pages";
+import { Actor, Contact, Detail, Home, Search } from "./pages";
 import { Navbar, Sidebar } from "./layout";
 import { useGlobalContext } from "./context/Context";
-import { BlackScreen, MovieModel, SearchFilter, SearchResult } from "./components";
+import { BlackScreen, MovieModel, SearchFilter } from "./components";
 
 const App = () => {
   const { toogleSidebar, movieModel, toogleSearch, setToogleSearch, setMovieModel, setToogleSidebar } = useGlobalContext();
@@ -17,7 +17,6 @@ const App = () => {
         <>
           <BlackScreen onClick={handleSearch} />
           <SearchFilter />
-          <SearchResult />
         </>
       )}
       <Navbar />
@@ -38,6 +37,7 @@ const App = () => {
         <Route element={<Detail />} path="/movie/:id" />
         <Route element={<Actor />} path="/actor/:id" />
         <Route element={<Search />} path="/search/:id" />
+        <Route element={<Contact />} path="/login" />
       </Routes>
     </header>
   );

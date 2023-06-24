@@ -8,11 +8,15 @@ export type TContext = {
   movieId: number;
   timePopuler: string;
   toogleSearch: boolean;
+  filterSearch: string;
+  formLogin: any;
   moreActor: boolean;
   setToogleSidebar: React.Dispatch<SetStateAction<boolean>>;
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
   setTimePopuler: React.Dispatch<SetStateAction<string>>;
+  setFilterSearch: React.Dispatch<SetStateAction<string>>;
   setMovieModel: React.Dispatch<SetStateAction<boolean>>;
+  setFormLogin: React.Dispatch<SetStateAction<any>>;
   setMovieId: React.Dispatch<SetStateAction<number>>;
   setGenreName: React.Dispatch<SetStateAction<string>>;
   setMoreActor: React.Dispatch<SetStateAction<boolean>>;

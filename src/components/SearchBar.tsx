@@ -10,8 +10,9 @@ const SearchBar = () => {
     navigate(`/search/${searchTerm}`);
     setSearchTerm("");
   };
+
   return (
-    <form className=" relative" onSubmit={handleSubmit}>
+    <form className="relative" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search Movies"

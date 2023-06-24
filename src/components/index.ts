@@ -10,6 +10,6 @@ export { default as MovieModel } from "./MovieModel";
 export { default as RelatedMovie } from "./RelatedMovie";
 export { default as NowPlaying } from "./NowPlaying";
 export { default as SearchFilter } from "./SearchFilter";
-export { default as SearchResult } from "./SearchResult";
 export { default as Button } from "./Button";
 export { default as RelatedActorMovie } from "./RelatedActorMovie";
+export { default as Login } from "./Login";
