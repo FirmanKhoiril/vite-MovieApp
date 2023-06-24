@@ -10,7 +10,7 @@ const useGetSearchTerm = ({ id }: searchProps) => {
     refetchInterval: 60 * (60 * 1000),
     refetchOnWindowFocus: false,
     getNextPageParam: (pages) => {
-      if (pages.next === null) return;
+      if (pages.page > pages.total_pages) return;
       return pages.page + 1;
     },
   });

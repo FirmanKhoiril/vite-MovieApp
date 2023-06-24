@@ -12,3 +12,4 @@ export { default as NowPlaying } from "./NowPlaying";
 export { default as SearchFilter } from "./SearchFilter";
 export { default as SearchResult } from "./SearchResult";
 export { default as Button } from "./Button";
+export { default as RelatedActorMovie } from "./RelatedActorMovie";

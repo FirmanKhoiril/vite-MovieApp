@@ -26,24 +26,24 @@ const Search = () => {
   }, [isFetchingNextPage, isLoading, fetchNextPage, inView]);
 
   return (
-    <>
+    <Box sx={{ minHeight: "100vh" }}>
       {isLoading && isFetching ? (
         <Loading />
       ) : isError ? (
         <Error />
       ) : (
         isSuccess && (
-          <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", py: 10 }}>
-            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 2, py: 10 }}>{data?.pages.map((page) => page.results.map((item: TCardDetail) => <MovieCard movie={item} />))}</Box>
+          <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", py: 10, justifyContent: "center" }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 2, py: 10 }}>{data?.pages.map((page) => page.results.map((item: TCardDetail) => <MovieCard key={item.id} movie={item} />))}</Box>
             {hasNextPage && (
-              <button type="button" ref={ref} className="" onClick={handleNextPage}>
-                <RotatingLines strokeColor="#dc2626" strokeWidth="5" animationDuration="0.75" width="60" visible={true} />
+              <button type="button" ref={ref} onClick={handleNextPage}>
+                {isFetchingNextPage ? <RotatingLines strokeColor="#dc2626" strokeWidth="5" animationDuration="0.75" width="60" visible={true} /> : ""}
               </button>
             )}
           </Box>
         )
       )}
-    </>
+    </Box>
   );
 };
 

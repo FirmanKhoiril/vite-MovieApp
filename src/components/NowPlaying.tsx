@@ -13,7 +13,7 @@ const NowPlaying = () => {
     <Box sx={{ py: { md: 10, xs: 5 } }}>
       <Box sx={{ display: "flex", justifyContent: "space-between", px: { md: 4, xs: 2 }, py: 2, alignItems: "center" }}>
         <Typography variant="h4" sx={{ fontSize: { md: 40, xs: 26, sm: 30 } }}>
-          Trending Movie {timePopuler === "day" ? "Today" : "This Week"}
+          Trending {timePopuler === "day" ? "Today" : "This Week"}
         </Typography>
         <Box sx={{ overflow: "hidden", borderRadius: 9999, display: "flex", alignItems: "center" }} className="border border-red-500">
           {time.map((item) => (

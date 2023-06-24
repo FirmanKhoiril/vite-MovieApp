@@ -96,6 +96,21 @@ export type TDetail = {
   vote_average: number | any;
 };
 
+export type TDetailActor = {
+  also_known_as: [string];
+  biography?: string;
+  birthday: string;
+  deathday?: string;
+  gender: number;
+  homepage: string;
+  imdb_id: string;
+  known_for_department: string;
+  id: number | any;
+  place_of_birth: string;
+  profile_path: string;
+  name: string;
+};
+
 export type TSpoken = {
   english_name: string;
   name: string;

@@ -12,11 +12,11 @@ const MovieCard = ({ movie }: ICardDetail) => {
   return (
     <Box sx={{ display: "flex", minHeight: 330, minWidth: 220, flexDirection: "column", position: "relative" }} className=" group rounded-t-2xl">
       <LazyLoadImage
-        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+        src={`https://image.tmdb.org/t/p/original/${movie.poster_path || movie.backdrop_path}`}
         effect="opacity"
         loading="lazy"
         className="min-h-[300px] absolute rounded-2xl transition__all peer ease-linear min-w-[220px]  group-hover:translate-y-[-5vw]"
-        alt={movie.original_title}
+        alt={movie.original_title || movie.title}
         height={320}
         width={200}
       />

@@ -17,7 +17,7 @@ const Detail = () => {
   const { data, isError, isFetching, isLoading, isSuccess } = useGetDetail({ id });
 
   return (
-    <>
+    <Box sx={{ minHeight: "80vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
       {isLoading && isFetching ? (
         <Loading />
       ) : isError ? (
@@ -85,7 +85,7 @@ const Detail = () => {
                   <Typography variant="h5">Production Companies</Typography>
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 2 }}>
                     {data?.production_companies.map((company: TProductionCompanies) => (
-                      <Box sx={{ display: "flex", bgcolor: "white", px: 1.2, py: 0.8, alignItems: "center", borderRadius: 1, gap: 1, flexDirection: "column" }} key={company.id}>
+                      <Box sx={{ display: "flex", bgcolor: "white", px: 1.2, py: 0.8, alignItems: "center", borderRadius: 1, gap: 1, flexDirection: "column" }} className="hover:bg-white/70 transition__all" key={company.id}>
                         <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${company.logo_path}`} className="mix-blend-darken h-10" loading="lazy" effect="opacity" alt={company.name} />
                         <Typography sx={{ color: "black", opacity: 0.6 }} variant="subtitle2">
                           {company.name}
@@ -111,7 +111,7 @@ const Detail = () => {
           </Container>
         )
       )}
-    </>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TDetail } from "../types/Types";
+import { TDetail, TDetailActor } from "../types/Types";
 
 const options = {
   headers: {
@@ -41,6 +41,16 @@ export const getActorMovie = async (id?: string): Promise<any> => {
 };
 export const getRelatedMovies = async (id?: string): Promise<any> => {
   const res = await fetchMovie(`movie/${id}/similar?language=en-US&page=1&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
+  return res;
+};
+
+export const getDetailActor = async (id?: string): Promise<TDetailActor> => {
+  const res = await fetchMovie(`person/${id}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
+  return res;
+};
+
+export const getRelatedActorPlay = async (id?: string): Promise<any> => {
+  const res = await fetchMovie(`/person/${id}/movie_credits?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
   return res;
 };
 
