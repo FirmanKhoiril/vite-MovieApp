@@ -20,7 +20,7 @@ const NowPlaying = () => {
             <Box
               component={"button"}
               key={item.name}
-              sx={{ py: { md: 1, sm: 1, xs: 0.5 }, px: { md: 2.5, sm: 2, xs: 1.5 } }}
+              sx={{ py: { md: 1, sm: 1, xs: 0.5 }, px: { md: 2.5, sm: 2, xs: 1 } }}
               className={`${timePopuler === item.name ? "bg-gradient-to-r from-red-600 via-red-400 to-red-500" : "bg-white/10"}`}
               onClick={() => setTimePopuler(item.name)}
             >
@@ -35,7 +35,7 @@ const NowPlaying = () => {
         <Error />
       ) : (
         isSuccess && (
-          <Box sx={{ display: "flex", gap: 2, py: 5, px: 4, flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
+          <Box sx={{ display: "flex", gap: 2, py: 3, px: 2, flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
             {data?.results.map((item: TCardDetail) => (
               <MovieCard key={item.id} movie={item} />
             ))}

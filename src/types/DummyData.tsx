@@ -19,7 +19,7 @@ export const Categorygenres = [
         url: "movie/popular?language=en-US",
       },
       {
-        name: "Top Rated",
+        name: "Rated",
         icon: <BsStar />,
         url: "movie/top_rated?language=en-US",
       },

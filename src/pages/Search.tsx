@@ -36,8 +36,8 @@ const Search = () => {
         <Error />
       ) : (
         isSuccess && (
-          <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", py: 10, justifyContent: "center" }}>
-            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 2, py: 10 }}>{data?.pages.map((page) => page.results.map((item: TCardDetail) => <MovieCard key={item.id} movie={item} />))}</Box>
+          <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", py: 5, justifyContent: "center" }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 2, py: 5 }}>{data?.pages.map((page) => page.results.map((item: TCardDetail) => <MovieCard key={item.id} movie={item} />))}</Box>
             {hasNextPage && (
               <button type="button" ref={ref} onClick={handleNextPage}>
                 {isFetchingNextPage ? <RotatingLines strokeColor="#dc2626" strokeWidth="5" animationDuration="0.75" width="60" visible={true} /> : ""}

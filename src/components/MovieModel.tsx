@@ -1,4 +1,4 @@
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player";
 import { TTrailer } from "../types/Types";
 import useGetTrailerBackground from "../hooks/useGetTrailerBackground";
 import { BlackScreen, Error, Loading } from ".";

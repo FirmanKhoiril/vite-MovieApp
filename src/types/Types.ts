@@ -10,7 +10,11 @@ export type TContext = {
   toogleSearch: boolean;
   filterSearch: string;
   formLogin: any;
+  user: any;
   moreActor: boolean;
+  toogleUsers: boolean;
+  setUser: React.Dispatch<SetStateAction<any>>;
+  setToogleUsers: React.Dispatch<SetStateAction<boolean>>;
   setToogleSidebar: React.Dispatch<SetStateAction<boolean>>;
   setSearchTerm: React.Dispatch<SetStateAction<string>>;
   setTimePopuler: React.Dispatch<SetStateAction<string>>;

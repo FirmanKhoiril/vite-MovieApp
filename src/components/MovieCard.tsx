@@ -3,7 +3,7 @@ import { ICardDetail } from "../types/Types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { Link } from "react-router-dom";
-import { BsStarFill, BsStarHalf, BsStar, BsFillPlayFill } from "react-icons/bs";
+import { BsStarFill, BsInfoCircle, BsStarHalf, BsStar, BsFillPlayFill } from "react-icons/bs";
 import moment from "moment";
 import { useGlobalContext } from "../context/Context";
 
@@ -20,6 +20,9 @@ const MovieCard = ({ movie }: ICardDetail) => {
         height={320}
         width={200}
       />
+      <Link to={`/movie/${movie.id}`} className="absolute top-0 right-0 scale-0 group-hover:scale-100 transition__all group-hover:translate-y-[-5vw] p-2 hover:text-red-500">
+        <BsInfoCircle size={25} />
+      </Link>
 
       <Box sx={{ minHeight: 50, width: 220, mt: 2, position: "absolute", bottom: 0, p: 1 }} className="sm:group-hover:translate-y-[-4vw] rounded-b-xl transition__all group-hover:opacity-100 opacity-0 bg-zinc-900/90">
         <Typography variant="subtitle2">
@@ -39,7 +42,7 @@ const MovieCard = ({ movie }: ICardDetail) => {
         <Link to={`/movie/${movie.id}`}>
           <Typography variant="body2">
             <Tooltip title={movie.title}>
-              <span className="text-[16px] bg-gradient-to-r text-transparent bg-clip-text from-red-500 via-red-400 to-red-500 hover:text-red-500 transition__all tracking-wide">{movie.title}</span>
+              <span className="text-[16px] bg-gradient-to-r text-transparent bg-clip-text from-teal-500 via-sky-400 to-emerald-500 hover:text-teal-500 transition__all tracking-wide">{movie.title}</span>
             </Tooltip>
           </Typography>
         </Link>

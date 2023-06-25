@@ -24,6 +24,10 @@ const StateContext = createContext<TContext>({
   timePopuler: "",
   setFormLogin: () => {},
   formLogin: {},
+  setToogleUsers: () => {},
+  setUser: () => {},
+  user: "",
+  toogleUsers: false,
 });
 
 const initialForm = {
@@ -35,8 +39,10 @@ const initialForm = {
 export const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [toogleSidebar, setToogleSidebar] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [user, setUser] = useState(localStorage.getItem("users"));
   const [movieModel, setMovieModel] = useState(false);
   const [movieId, setMovieId] = useState(0);
+  const [toogleUsers, setToogleUsers] = useState(false);
   const [formLogin, setFormLogin] = useState(initialForm);
   const [timePopuler, setTimePopuler] = useState("day");
   const [filterSearch, setFilterSearch] = useState("");
@@ -47,9 +53,13 @@ export const ContextProvider = ({ children }: { children: React.ReactNode }) => 
   return (
     <StateContext.Provider
       value={{
+        user,
+        setUser,
         filterSearch,
         formLogin,
         setFormLogin,
+        toogleUsers,
+        setToogleUsers,
         setFilterSearch,
         toogleSidebar,
         toogleSearch,

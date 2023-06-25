@@ -18,7 +18,7 @@ const HeroBackground = ({ background }: any) => {
   }, []);
 
   return (
-    <Box sx={{ px: 1, my: 1 }}>
+    <Box sx={{ px: { md: 2, xs: 1 }, my: 1 }}>
       {randomBackground.map((item: TCardDetail) => (
         <Box sx={{ width: "100%", height: "80vh", position: "relative" }} key={item.id}>
           <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} className="h-[80vh] w-[100vw] opacity-80" />
@@ -29,7 +29,7 @@ const HeroBackground = ({ background }: any) => {
             <Typography variant="h2" className="drop-shadow-xl" fontWeight={800}>
               Welcome. <br />
               <span className="text-xl md:text-3xl">
-                Discover Millions of movies, TV shows and people to discover. <br className="md:block hidden" /> Explore now.
+                Discover Millions of movies, TV shows and people. <br className="md:block hidden" /> Explore now.
               </span>
             </Typography>
             <SearchBar />
