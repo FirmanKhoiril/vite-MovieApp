@@ -5,11 +5,11 @@ import { Box } from "@mui/material";
 import { TCardDetail } from "../types/Types";
 import { RotatingLines } from "react-loader-spinner";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const Search = () => {
   const { id } = useParams();
-
+  const divRef = useRef<HTMLDivElement | any>(null);
   const { ref, inView } = useInView({
     threshold: 0,
     rootMargin: "300px",
@@ -24,9 +24,12 @@ const Search = () => {
   useEffect(() => {
     if (inView) fetchNextPage();
   }, [isFetchingNextPage, isLoading, fetchNextPage, inView]);
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   return (
-    <Box sx={{ minHeight: "100vh" }}>
+    <Box ref={divRef} sx={{ minHeight: "100vh" }}>
       {isLoading && isFetching ? (
         <Loading />
       ) : isError ? (

@@ -16,7 +16,7 @@ const SearchBar = () => {
       <input
         type="text"
         placeholder="Search Movies"
-        className="outline-none placeholder:text-black/40 rounded-full focus:placeholder:text-black/70 peer tracking-wide bg-white text-black shadow-xl focus:bg-white transition__all py-2 px-4 min-w-[280px] md:min-w-[400px] lg:min-w-[600px]"
+        className="outline-none placeholder:text-black/40 rounded-full focus:placeholder:text-black/70 peer tracking-wide bg-white text-black shadow-xl focus:bg-white transition__all py-2 px-4 min-w-[340px] md:min-w-[400px] lg:min-w-[600px]"
         value={searchTerm}
         required
         onChange={(e) => setSearchTerm(e.target.value)}

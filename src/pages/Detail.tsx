@@ -6,6 +6,7 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 import moment from "moment";
 import { TGenre, TProductionCompanies, TSpoken } from "../types/Types";
 import { Actor, Error, Genre, Loading, RelatedMovie } from "../components";
+import { useRef, useEffect } from "react";
 import useGetDetail from "../hooks/useGetDetail";
 import { BsFillPlayFill } from "react-icons/bs";
 import { useGlobalContext } from "../context/Context";
@@ -13,11 +14,16 @@ import { MdExpandMore, MdExpandLess } from "react-icons/md";
 
 const Detail = () => {
   const { id } = useParams();
+  const divRef = useRef<HTMLDivElement | any>(null);
   const { setMovieId, setMovieModel, setMoreActor, moreActor } = useGlobalContext();
   const { data, isError, isFetching, isLoading, isSuccess } = useGetDetail({ id });
 
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
-    <Box sx={{ minHeight: "80vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <Box ref={divRef} sx={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
       {isLoading && isFetching ? (
         <Loading />
       ) : isError ? (

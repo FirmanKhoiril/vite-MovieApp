@@ -1,21 +1,20 @@
 import { Box, Typography } from "@mui/material";
 import Bg from "../assets/hero.jpg";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Login } from "../components";
 
 const Contact = () => {
   return (
-    <Box sx={{ display: "flex", width: "100%", position: "relative", height: "80%", justifyContent: "center", alignItems: "center" }}>
-      <LazyLoadImage src={Bg} alt="background" loading="lazy" effect="opacity" className="h-screen md:h-[80%] w-full " />
+    <Box sx={{ display: "flex", width: "100%", position: "relative", height: "60%", justifyContent: "center", alignItems: "center" }}>
+      <LazyLoadImage src={Bg} alt="background" loading="lazy" effect="opacity" className="h-screen md:h-[60%] w-full " />
       <Box
         sx={{
           position: "absolute",
-          minHeight: "60vh",
-          minWidth: { md: 420, xs: 370 },
+          minHeight: "50vh",
+          minWidth: { md: 420, xs: 350 },
           zIndex: 10,
-          top: "1/2",
+          top: "1",
           display: "flex",
           alignItems: "center",
           flexDirection: "column",

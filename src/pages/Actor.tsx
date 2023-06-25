@@ -6,16 +6,22 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import moment from "moment";
 import { MdArrowBack } from "react-icons/md";
+import { useRef, useEffect } from "react";
 
 const Actor = () => {
+  const divRef = useRef<HTMLDivElement | any>(null);
   const navigate = useNavigate();
   const { id } = useParams();
   const { data, isFetching, isLoading, isError, isSuccess } = useGetDetailActor({ id });
 
   const handleBack = () => navigate(-1);
 
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
-    <Container sx={{ minHeight: "100vh" }}>
+    <Container ref={divRef} sx={{ minHeight: "100vh" }}>
       {isLoading && isFetching ? (
         <Loading />
       ) : isError ? (
@@ -28,12 +34,12 @@ const Actor = () => {
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 <Typography variant="h3">{data?.name}</Typography>
                 <Typography variant="h6" color={"whitesmoke"}>
-                  Born: {data?.birthday === null ? "Don't have data" : moment(data?.birthday).format("LLL")}
+                  Born: {data?.birthday === null ? "Don't have data" : moment(data?.birthday).format("ll")}
                 </Typography>
                 <Typography variant="subtitle1" sx={{ minWidth: 300, maxWidth: 650 }} color={"whitesmoke"}>
                   {data?.biography}
                 </Typography>
-                <Box onClick={handleBack} sx={{ display: "flex", borderRadius: 1, alignItems: "center", gap: 0.5, maxWidth: 100 }} className="text-red-400 hover:bg-white/30 bg-white/10 transition__all hover:text-white">
+                <Box onClick={handleBack} sx={{ display: "flex", borderRadius: 1, alignItems: "center", gap: 0.5, maxWidth: 100, cursor: "pointer" }} className="text-red-400 hover:bg-white/30 bg-white/10 transition__all hover:text-white">
                   <Button name="goBack" type="button" label="backButton" icon={<MdArrowBack size={25} />} onClick={handleBack} />
                   Back
                 </Box>

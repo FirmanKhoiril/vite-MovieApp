@@ -18,7 +18,7 @@ const Home = () => {
         isSuccess && (
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <HeroBackground background={data} />
-            <Typography variant="h4" sx={{ px: 4, py: 2 }}>
+            <Typography variant="h4" sx={{ px: 4, py: 2, fontSize: { md: 32, xs: 22 }, fontWeight: 800 }}>
               Top <span className="capitalize">{genreName}</span> Movie in 2023
             </Typography>
 
