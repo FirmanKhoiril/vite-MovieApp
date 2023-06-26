@@ -135,7 +135,7 @@ export interface ICardDetail {
     release_date: string;
     vote_average: number;
     poster_path: string;
-    popularity: number;
+    popularity: number | any;
   };
 }
 export interface IHeroBanner {

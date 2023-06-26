@@ -7,9 +7,12 @@ import { useGlobalContext } from "../context/Context";
 
 const MovieModel = () => {
   const { data, isLoading, isFetching, isError, isSuccess } = useGetTrailerBackground();
-  const { movieModel, setMovieModel } = useGlobalContext();
+  const { movieModel, setMovieModel, setMovieId } = useGlobalContext();
 
-  const handleModel = () => setMovieModel((prev: boolean) => !prev);
+  const handleModel = () => {
+    setMovieModel((prev: boolean) => !prev);
+    setMovieId(0);
+  };
 
   return (
     <>
@@ -23,7 +26,7 @@ const MovieModel = () => {
           isSuccess && (
             <>
               {data?.results?.slice(0, 1).map((movie: TTrailer) => (
-                <ReactPlayer playing={movieModel ? true : false} key={movie.id} url={`https://www.youtube.com/watch?v=${movie.key}`} controls className="react-player" />
+                <ReactPlayer playing key={movie.id} url={`https://www.youtube.com/watch?v=${movie.key}`} controls className="react-player" />
               ))}
             </>
           )

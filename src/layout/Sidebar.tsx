@@ -15,14 +15,14 @@ const Sidebar = () => {
   return (
     <>
       <Stack
-        className={`${toogleSidebar ? "translate-x-[0%]" : "translate-x-[-100%]"} transition duration-[600ms]  scrollbar-h-2 scrollbar-thumb-red-500 scrollbar-thin scrollbar-track-black/10 scroll-p-2`}
+        className={`${toogleSidebar ? "translate-x-[0%]" : "translate-x-[-100%]"} transition duration-[600ms] scrollbar-none`}
         sx={{ overflowY: "auto", height: "100%", flexDirection: "column", position: "fixed", top: 0, zIndex: 30, bgcolor: "#18181b", px: 2, py: 1 }}
       >
         <Box>
           <Button icon={<AiOutlineClose size={25} />} onClick={handleClose} name="handleClose" label="handleClose" type="button" />
         </Box>
         <Link to={`/`}>
-          <Typography variant="h3" className=" text-darkLogo font-logo tracking-tighter" sx={{ fontWeight: "bold", p: 2 }}>
+          <Typography variant="h4" className=" text-darkLogo font-logo tracking-tighter" sx={{ fontWeight: "bold", p: 2, textAlign: "center" }}>
             FILMREF
           </Typography>
         </Link>

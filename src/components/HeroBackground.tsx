@@ -18,18 +18,20 @@ const HeroBackground = ({ background }: any) => {
   }, []);
 
   return (
-    <Box sx={{ px: { md: 2, xs: 1 }, my: 1 }}>
+    <Box sx={{}}>
       {randomBackground.map((item: TCardDetail) => (
-        <Box sx={{ width: "100%", height: "80vh", position: "relative" }} key={item.id}>
-          <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} className="h-[80vh] w-[100vw] opacity-80" />
+        <Box sx={{ width: "100%", height: "70vh", position: "relative" }} key={item.id}>
+          <LazyLoadImage src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} loading="lazy" effect="opacity" height={300} className="h-[70vh] w-[100vw] opacity-50" />
           <Box
-            sx={{ position: "absolute", height: "80vh", width: "100%", zIndex: 10, top: 0, display: "flex", m: "auto", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 2, px: 2 }}
-            className=" bg-gradient-to-b from-transparent to-zinc-900/60"
+            sx={{ position: "absolute", height: "70vh", width: "100%", zIndex: 10, top: 0, display: "flex", m: "auto", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 2, px: 2 }}
+            className=" bg-gradient-to-b from-transparent via-zinc-900/30 to-zinc-900/90"
           >
-            <Typography variant="h2" className="drop-shadow-xl" fontWeight={800}>
-              Welcome. <br />
-              <span className="text-xl md:text-3xl">
-                Discover Millions of movies, TV shows and people. <br className="md:block hidden" /> Explore now.
+            <Typography variant="h2" sx={{ fontWeight: 800, textShadow: "unset", fontSize: { md: 50, xs: 36 } }}>
+              <span className="font-logo tracking-wide">
+                Welcome. <br />
+                <span className="text-xl md:text-3xl">
+                  Discover Millions of movies, TV shows and people. <br className="md:block hidden" /> Explore now.
+                </span>
               </span>
             </Typography>
             <SearchBar />

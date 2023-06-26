@@ -1,63 +1,43 @@
 import { Box, Typography, Tooltip } from "@mui/material";
 import { ICardDetail } from "../types/Types";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/opacity.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from "react-router-dom";
-import { BsStarFill, BsInfoCircle, BsStarHalf, BsStar, BsFillPlayFill } from "react-icons/bs";
 import moment from "moment";
-import { useGlobalContext } from "../context/Context";
 
 const MovieCard = ({ movie }: ICardDetail) => {
-  const { setMovieId, setMovieModel } = useGlobalContext();
   return (
-    <Box sx={{ display: "flex", minHeight: 330, minWidth: 220, flexDirection: "column", position: "relative" }} className=" group rounded-t-2xl">
+    <Link to={`/movie/${movie.id}`} className=" rounded-t-2xl group flex flex-col relative md:h-[300px] h-[240px] hover:scale-105 transition__all w-[200px]">
       <LazyLoadImage
         src={`https://image.tmdb.org/t/p/original/${movie.poster_path || movie.backdrop_path}`}
-        effect="opacity"
+        effect="blur"
         loading="lazy"
-        className="min-h-[300px] absolute rounded-2xl transition__all peer ease-linear min-w-[220px]  group-hover:translate-y-[-5vw]"
+        className="md:h-[300px] h-[240px] absolute rounded-md w-[200px] object-fill"
         alt={movie.original_title || movie.title}
-        height={320}
         width={200}
       />
-      <Link to={`/movie/${movie.id}`} className="absolute top-0 right-0 scale-0 group-hover:scale-100 transition__all group-hover:translate-y-[-5vw] p-2 hover:text-red-500">
-        <BsInfoCircle size={25} />
-      </Link>
 
-      <Box sx={{ minHeight: 50, width: 220, mt: 2, position: "absolute", bottom: 0, p: 1 }} className="sm:group-hover:translate-y-[-4vw] rounded-b-xl transition__all group-hover:opacity-100 opacity-0 bg-zinc-900/90">
-        <Typography variant="subtitle2">
-          <span className="text-xs">{moment(movie.release_date).format("LL")}</span>
-        </Typography>
-        <Box
-          component={"button"}
-          sx={{ position: "absolute", bottom: 2, right: 2, bgcolor: "#dc2626", width: 32, height: 32, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
-          className="hover:bg-white/80 transition__all"
-          onClick={() => {
-            setMovieId(movie.id);
-            setMovieModel((prev: boolean) => !prev);
-          }}
-        >
-          <BsFillPlayFill size={30} className="hover:text-black" />
-        </Box>
+      <Box
+        sx={{ height: { md: 300, xs: 240 }, width: "100%", position: "absolute", bottom: 0, p: 1, display: "flex", flexDirection: "column", justifyContent: "end" }}
+        className="bg-gradient-to-b from-transparent via-zinc-900/30 to-zinc-900/90 opacity-0 group-hover:opacity-100 transition__all "
+      >
         <Link to={`/movie/${movie.id}`}>
-          <Typography variant="body2">
+          <Typography variant="subtitle2">
             <Tooltip title={movie.title}>
-              <span className="text-[16px] bg-gradient-to-r text-transparent bg-clip-text from-teal-500 via-sky-400 to-emerald-500 hover:text-teal-500 transition__all tracking-wide">{movie.title}</span>
+              <span className="text-[15px] font-logo tracking-wide">{movie.title}</span>
             </Tooltip>
           </Typography>
         </Link>
-
-        <Tooltip title={movie.vote_average}>
-          <span className="flex text-orange-300">
-            {movie.vote_average >= 2 ? <BsStarFill /> : movie.vote_average >= 1 ? <BsStarHalf /> : <BsStar />}
-            {movie.vote_average >= 4 ? <BsStarFill /> : movie.vote_average >= 3 ? <BsStarHalf /> : <BsStar />}
-            {movie.vote_average >= 6 ? <BsStarFill /> : movie.vote_average >= 5 ? <BsStarHalf /> : <BsStar />}
-            {movie.vote_average >= 8 ? <BsStarFill /> : movie.vote_average >= 7 ? <BsStarHalf /> : <BsStar />}
-            {movie.vote_average >= 10 ? <BsStarFill /> : movie.vote_average >= 9 ? <BsStarHalf /> : <BsStar />}
-          </span>
-        </Tooltip>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Tooltip title={Math.floor(movie.vote_average * 10)}>
+            <span className="font-bold text-teal-500 text-lg"> {Math.floor(movie.vote_average * 10)}% Match</span>
+          </Tooltip>
+          <Tooltip title={moment(movie.release_date).format("LL")}>
+            <span className="font-bold text-lg">{moment(movie.release_date).format("YYYY")}</span>
+          </Tooltip>
+        </Box>
       </Box>
-    </Box>
+    </Link>
   );
 };
 

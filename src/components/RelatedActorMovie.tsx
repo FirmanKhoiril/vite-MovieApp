@@ -14,7 +14,7 @@ const RelatedActorMovie = ({ id }: IId) => {
         <Error />
       ) : (
         isSuccess && (
-          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 1.5, py: 10 }}>
+          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 3, py: 10 }}>
             {data?.cast.map((item: TCardDetail) => (
               <MovieCard key={item.id} movie={item} />
             ))}

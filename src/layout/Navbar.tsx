@@ -28,7 +28,7 @@ const Navbar = () => {
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <Button label="handleMenu" name="handleMenu" type="button" icon={<AiOutlineMenu size={25} />} onClick={handleMenu} />
         <Link to={`/`}>
-          <Typography variant="h4" className=" text-darkLogo font-logo tracking-tighter" sx={{ fontWeight: 900 }}>
+          <Typography variant="h5" className=" text-darkLogo font-logo tracking-tighter" sx={{ fontWeight: 900 }}>
             FILMREF
           </Typography>
         </Link>
@@ -37,7 +37,7 @@ const Navbar = () => {
         <Button label="handleSearch" name="handleSearchToogle" type="button" icon={<AiOutlineSearch size={25} />} onClick={handleSearch} />
         {users ? (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <LazyLoadImage width={36} loading="lazy" alt={"users"} height={36} src={LogoUser} />
+            <LazyLoadImage width={36} loading="lazy" alt={"users"} height={36} src={LogoUser} className="rounded-lg" />
             <Button onClick={handleUsers} icon={toogleUsers ? <MdExpandLess size={25} /> : <MdExpandMore size={25} />} type="button" name="handleUser" label="handleUser" />
 
             <Box

@@ -31,8 +31,8 @@ export const detailMovies = async (id?: string): Promise<TDetail> => {
   return res;
 };
 
-export const getNowPlaying = async (timePopuler?: string): Promise<any> => {
-  const res = await fetchMovie(`trending/movie/${timePopuler}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`);
+export const getNowPlaying = async (timePopuler?: string, pageParam?: number): Promise<any> => {
+  const res = await fetchMovie(`trending/movie/${timePopuler}?language=en-US&api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&page=${pageParam}`);
   return res;
 };
 export const getActorMovie = async (id?: string): Promise<any> => {

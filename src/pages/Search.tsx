@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useGetSearchTerm from "../hooks/useGetSearchTerm";
 import { Error, Loading, MovieCard } from "../components";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { TCardDetail } from "../types/Types";
 import { RotatingLines } from "react-loader-spinner";
 import { useInView } from "react-intersection-observer";
@@ -37,7 +37,10 @@ const Search = () => {
       ) : (
         isSuccess && (
           <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", py: 5, justifyContent: "center" }}>
-            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 2, py: 5 }}>{data?.pages.map((page) => page.results.map((item: TCardDetail) => <MovieCard key={item.id} movie={item} />))}</Box>
+            <Typography variant="h4">
+              Searching for <span className="text-red-600">{id}</span>{" "}
+            </Typography>
+            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 3, py: 5 }}>{data?.pages.map((page) => page.results.map((item: TCardDetail) => <MovieCard key={item.id} movie={item} />))}</Box>
             {hasNextPage && (
               <button type="button" ref={ref} onClick={handleNextPage}>
                 {isFetchingNextPage ? <RotatingLines strokeColor="#dc2626" strokeWidth="5" animationDuration="0.75" width="60" visible={true} /> : ""}

@@ -8,7 +8,7 @@ const RelatedMovie = ({ id }: IId) => {
 
   return (
     <>
-      <Typography variant="h4" sx={{ py: 2 }}>
+      <Typography variant="h4" sx={{ py: 2, textAlign: "center" }}>
         Related Movie
       </Typography>
       {isLoading && isFetching ? (
@@ -17,7 +17,7 @@ const RelatedMovie = ({ id }: IId) => {
         <Error />
       ) : (
         isSuccess && (
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, justifyContent: "center", alignItems: "center" }}>
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3, justifyContent: "center", alignItems: "center" }}>
             {data?.results.map((item: TCardDetail) => (
               <MovieCard key={item.id} movie={item} />
             ))}
