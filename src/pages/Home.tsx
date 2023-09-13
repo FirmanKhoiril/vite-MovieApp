@@ -13,11 +13,11 @@ const Home = () => {
     divRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [isLoading, isFetching]);
 
+  if (isLoading && isFetching) return <Loading />;
+
   return (
     <main className="min-h-screen">
-      {isLoading && isFetching ? (
-        <Loading />
-      ) : isError ? (
+      {isError ? (
         <Error error={error} />
       ) : (
         isSuccess && (
@@ -27,7 +27,7 @@ const Home = () => {
               <span className="capitalize">{genreName}</span> Movie in 2023
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 1.5, px: 2, overflowX: "scroll", pt: { md: 10, xs: 4 }, pb: 3, overflowY: "hidden" }} className=" scrollbar-none">
+            <Box sx={{ display: "flex", gap: 1.5, px: 2, overflowX: "scroll", p: 2, overflowY: "hidden" }} className=" scrollbar-none">
               {data.results.map((item: TCardDetail) => (
                 <MovieCard key={item.id} movie={item} />
               ))}
